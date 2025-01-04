@@ -6,6 +6,8 @@ const {
   verifyUser,
 } = require("../controller/authController");
 
+const authMiddleware = require("../middleware/auth"); //middleware to verify user
+
 //register path
 authRoute.post("/register", registerUser);
 
@@ -16,6 +18,6 @@ authRoute.post("/login", loginUser);
 authRoute.get("/logout", logoutUser);
 
 //verify user path
-authRoute.get("/verify/user", verifyUser);
+authRoute.get("/verify/user", authMiddleware, verifyUser);
 
 module.exports = authRoute;

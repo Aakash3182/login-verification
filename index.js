@@ -14,7 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 
 //middleware
 app.use(cors());
-app.use(cookieParser());
+app.use(cookieParser(process.env.SECRET_KEY));
 
 //api routes
 app.use("/api/auth", require("./route/authRoute"));
