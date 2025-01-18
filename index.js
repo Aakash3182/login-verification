@@ -18,6 +18,7 @@ app.use(cookieParser(process.env.SECRET_KEY));
 
 //api routes
 app.use("/api/auth", require("./route/authRoute"));
+app.use(`/api/user`, require("./route/userRoute"));
 
 app.listen(PORT, () => {
   connectDb();

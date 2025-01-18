@@ -33,10 +33,11 @@ function Register() {
         }
     }
   return (
-    <div className='container'>
-        <div className='row mt-4'>
+    <section className='form-area'>
+    <div className='container pt-5'>
+        <div className='row mt-5'>
             <div className='col-md-12 text-center'>
-                <h1 className='display-6 text-success'>Register User</h1>
+                <h1 className='display-6 text-secondary'>Are You New To Foody ? </h1>
             </div>
         </div>
 
@@ -70,6 +71,7 @@ function Register() {
             </div>
         </div>
 </div>
+</section>
   )
 }
 

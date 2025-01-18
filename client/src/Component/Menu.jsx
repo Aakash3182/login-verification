@@ -31,9 +31,9 @@ function Menu() {
 
 
     return (
-     <nav className='navbar navbar-expand-lg navbar-dark bg-success'>
+     <nav className='navbar navbar-expand-lg navbar-dark bg-secondary fixed-top'>
       <div className="container">
-          <NavLink to={'/'} className="navbar-brand">Final Project</NavLink>
+          <NavLink to={'/'} className="navbar-brand">Foody</NavLink>
   
           <button className="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
               <span className="navbar-toggler-icon"></span>
@@ -43,6 +43,20 @@ function Menu() {
               <ul className="navbar-nav">
                   <li className="nav-item">
                       <NavLink to={'/'} className="nav-link">Home</NavLink>
+                  </li>
+                  <li className="nav-item dropdown">
+                      <NavLink to={'/'} className="nav-link dropdown-toggle" data-bs-toggle='dropdown'>Collections</NavLink>
+                      <ul className='dropdown-menu'>
+                        <li>
+                          <NavLink to={`collection?q=dryfruits`}className='dropdown-item'>Dry Fruits</NavLink>
+                        </li>
+                        <li>
+                          <NavLink to={`collection?q=chocolates`}className='dropdown-item'>Chocolates</NavLink>
+                        </li>
+                        <li>
+                          <NavLink to={`collection?q=laddus`}className='dropdown-item'>Laddus</NavLink>
+                        </li>
+                      </ul>
                   </li>
                   </ul>
                   {
@@ -54,15 +68,17 @@ function Menu() {
         </NavLink>
         <ul className="dropdown-menu">
           <li>
-            <NavLink className="dropdown-item" to={`/dashboard`}>
+            <NavLink className="dropdown-item" to={`/${context?.user.role}/dashboard`}>
               Dashboard
             </NavLink>
           </li>
-          <li>
-            <NavLink className="dropdown-item" to={`/profile`}>
+          {
+          context?.user.role === "user" ? <li>
+            <NavLink className="dropdown-item" to={`/user/profile`}>
               Profile
             </NavLink>
-          </li>
+          </li> : null 
+          }
         </ul>
       </li>
       <li className="nav-item">

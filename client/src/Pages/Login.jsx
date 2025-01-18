@@ -1,7 +1,8 @@
 import React, {useState} from 'react'
 import {toast} from 'react-toastify'
 import axios from 'axios'
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import useAuth from '../Hooks/useAuth'
 
 function Login() {
     const [user, setUser] = useState({    
@@ -10,6 +11,8 @@ function Login() {
     })
 
     const navigate = useNavigate()
+
+    const context = useAuth()
 
     const readInput = async (e) => {
         const { name , value } =e.target
@@ -24,7 +27,8 @@ function Login() {
                 .then(res => {
                     toast.success(res.data.msg)
                     sessionStorage.setItem("token", res.data.token)
-                    navigate('/')
+                    context?.setToken(res.data.token)
+                    // navigate('/')
                 }). catch (err => toast.error(err.response.data.msg))
             }
         catch (err) {
@@ -32,10 +36,11 @@ function Login() {
         }
     }
   return (
-    <div className='container'>
-        <div className='row mt-4'>
+    <section className='form-area'>
+    <div className='container pt-5'>
+        <div className='row mt-5'>
             <div className='col-md-12 text-center'>
-                <h1 className='display-6 text-success'>User Login</h1>
+                <h1 className='display-6 text-secondary'>Sign In to Foody</h1>
             </div>
         </div>
 
@@ -61,6 +66,7 @@ function Login() {
             </div>
         </div>
 </div>
+</section>
   )
 }
 

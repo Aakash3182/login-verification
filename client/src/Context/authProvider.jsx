@@ -1,6 +1,7 @@
 import React, {createContext,useEffect, useState} from 'react'
 import axios from 'axios'
 import { toast } from 'react-toastify'
+import { useNavigate } from 'react-router-dom'
 
 // context
 export const AuthContext = createContext()
@@ -16,6 +17,8 @@ function AuthProvider(props) {
     // user info   
     const [user,setUser] = useState(false)
 
+    const navigate = useNavigate()
+
     // verify user
     const verifyUser = async () => {
       await axios.get('/api/auth/verify/user', {
@@ -27,6 +30,12 @@ function AuthProvider(props) {
          // console.log(`verify response =`, res.data)
           setIsLogin(true)
           setUser(res.data.user)
+          if (res.data.user.role === "admin") {
+            navigate(`/admin/dashboard`)
+          } else if (res.data.user.role === "user" ) {
+            navigate(`user/dashboard`)
+          }
+
         }).catch(err => toast.error(err.response.data.msg))
       }
       useEffect(() => {
@@ -37,7 +46,7 @@ function AuthProvider(props) {
     
       
   return (
-    <AuthContext.Provider value ={{token , setToken , user , setUser , isLogin , setIsLogin}}>
+    <AuthContext.Provider value ={{token , setToken , user , setUser , isLogin , setIsLogin, verifyUser}}>
         {props.children}
     </AuthContext.Provider>
   )
