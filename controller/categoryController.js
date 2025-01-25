@@ -1,4 +1,3 @@
-const category = require("../model/category");
 const Category = require("../model/category");
 const { StatusCodes } = require("http-status-codes");
 
@@ -17,8 +16,6 @@ const add_category = async (req, res) => {
     let newCat = await Category.create(req.body);
 
     res.json({ msg: "category added successfully", category: newCat });
-
-    res.json({ msg: "add" });
   } catch (err) {
     res
       .status(StatusCodes.INTERNAL_SERVER_ERROR)
@@ -34,13 +31,22 @@ const read_all_category = async (req, res) => {
   } catch (err) {
     res
       .status(StatusCodes.INTERNAL_SERVER_ERROR)
-      .json({ satus: false, msg: err.message });
+      .json({ status: false, msg: err.message });
   }
 };
 //read single category
 const read_single_category = async (req, res) => {
   try {
-    res.json({ msg: "read single" });
+    // read the category id
+    let id = req.params.id;
+
+    let exCat = await Category.findById(id);
+    if (!exCat) {
+      return res
+        .status(StatusCodes.NOT_FOUND)
+        .json({ status: false, msg: "requsted category not found" });
+    }
+    res.status(StatusCodes.ACCEPTED).json({ category: exCat });
   } catch (err) {
     res
       .status(StatusCodes.INTERNAL_SERVER_ERROR)
@@ -50,21 +56,46 @@ const read_single_category = async (req, res) => {
 // update category
 const update_category = async (req, res) => {
   try {
-    res.json({ msg: "update" });
+    // read the category id
+    let id = req.params.id;
+
+    let exCat = await Category.findById(id);
+    if (!exCat)
+      return res
+        .status(StatusCodes.NOT_FOUND)
+        .json({ status: false, msg: "requested category not found" });
+
+    //update logic
+    await Category.findByIdAndUpdate({ _id: id }, req.body);
+
+    res
+      .status(StatusCodes.ACCEPTED)
+      .json({ msg: "category updated successfully" });
   } catch (err) {
     res
       .status(StatusCodes.INTERNAL_SERVER_ERROR)
-      .json({ satus: false, msg: err.message });
+      .json({ status: false, msg: err.message });
   }
 };
 // dalete category
 const delete_category = async (req, res) => {
   try {
-    res.json({ msg: "dalete" });
+    // read the category id
+    let id = req.params.id;
+
+    let exCat = await Category.findById(id);
+    if (!exCat)
+      return res
+        .status(StatusCodes.NOT_FOUND)
+        .json({ status: false, msg: "requsted category not found" });
+
+    //delete logic
+    await Category.findByIdAndDelete({ _id: id });
+    res.status(StatusCodes.ACCEPTED).json({ msg: "category deleted" });
   } catch (err) {
     res
       .status(StatusCodes.INTERNAL_SERVER_ERROR)
-      .json({ satus: false, msg: err.message });
+      .json({ status: false, msg: err.message });
   }
 };
 

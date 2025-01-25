@@ -12,6 +12,9 @@ import Profile from "./Pages/User/Profile";
 import Footer from "./Component/Footer";
 import Collection from "./Pages/Collection";
 import AdminDashboard from "./Pages/Admin/AdminDashboard";
+import AllCategory from "./Pages/Admin/Category/AllCategory";
+import AddCategory from "./Pages/Admin/Category/AddCategory";
+import UpdateCategory from "./Pages/Admin/Category/UpdateCategory";
 function App() {
   return (
     <>
@@ -21,11 +24,14 @@ function App() {
         <Route path={`/`} element={<Home />} />
         <Route path={`/login`} element={<Login />} />
         <Route path={`/register`} element={<Register />} />
+        <Route path={"/Collection"} element={<Collection />} />
         <Route element={<PrivateRoute />}>
           <Route path={"/user/dashboard"} element={<Dashboard />} />
           <Route path={"/admin/dashboard"} element={<AdminDashboard />} />
           <Route path={"/user/Profile"} element={<Profile />} />
-          <Route path={"/Collection"} element={<Collection />} />
+          <Route path={`/category`} element={<AllCategory />} />
+          <Route path={`/category/add`} element={<AddCategory />} />
+          <Route path={`/category/edit/:id`} element={<UpdateCategory />} />
         </Route>
         <Route path={`/*`} element={<NotFound />} />
       </Routes>

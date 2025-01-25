@@ -77,7 +77,11 @@ function Menu() {
             <NavLink className="dropdown-item" to={`/user/profile`}>
               Profile
             </NavLink>
-          </li> : null 
+          </li> : <>
+          <li>
+            <NavLink to={`/category`} className={`dropdown-item`}>Categories</NavLink>
+          </li>
+          </>
           }
         </ul>
       </li>
