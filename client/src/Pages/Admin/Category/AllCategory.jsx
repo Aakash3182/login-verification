@@ -17,6 +17,19 @@ function AllCategory(props) {
     readData();
   }, []);
 
+  //delete product category
+  const deleteItem = async (id) => {
+    if (window.confirm(`Are you sure to delete category ? `)) {
+      await axios.delete(`/api/category/${id}`)
+      .then (res => {
+        toast.success(res.data.msg)
+        readData()
+      }).catch(err => toast.error(err.response.data.msg))
+    }else {
+      toast.warning("delete terminated")
+    }
+  }
+
   return (
     <div className='container mt-5'>
       <div className='row pt-5'>
@@ -59,7 +72,7 @@ function AllCategory(props) {
                         </td>
                         <td>
                           <NavLink to={`/category/edit/${item._id}`} className='btn btn-link text-info'><i className='bi bi-pencil'></i></NavLink>
-                          <button className='btn btn-link text-danger'><i className='bi bi-trash'></i></button>
+                          <button onClick={() => deleteItem(item._id)} className='btn btn-link text-danger'><i className='bi bi-trash'></i></button>
                         </td>
                       </tr>
                     );

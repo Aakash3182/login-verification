@@ -15,7 +15,7 @@ categoryRoute.get("/", read_all_category);
 categoryRoute.get("/:id", read_single_category);
 
 //update
-categoryRoute.put("/:id", update_category);
+categoryRoute.patch("/:id", update_category);
 
 //delete
 categoryRoute.delete("/:id", delete_category);

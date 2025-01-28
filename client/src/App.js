@@ -15,6 +15,9 @@ import AdminDashboard from "./Pages/Admin/AdminDashboard";
 import AllCategory from "./Pages/Admin/Category/AllCategory";
 import AddCategory from "./Pages/Admin/Category/AddCategory";
 import UpdateCategory from "./Pages/Admin/Category/UpdateCategory";
+import AllProducts from "./Pages/Admin/Products/AllProducts";
+import AddProducts from "./Pages/Admin/Products/Addproducts";
+import UpdateProducts from "./Pages/Admin/Products/UpdateProducts";
 function App() {
   return (
     <>
@@ -32,6 +35,9 @@ function App() {
           <Route path={`/category`} element={<AllCategory />} />
           <Route path={`/category/add`} element={<AddCategory />} />
           <Route path={`/category/edit/:id`} element={<UpdateCategory />} />
+          <Route path={`/products`} element={<AllProducts />} />
+          <Route path={`/products/add`} element={<AddProducts />} />
+          <Route path={`/products/edit/id`} element={<UpdateProducts />} />
         </Route>
         <Route path={`/*`} element={<NotFound />} />
       </Routes>

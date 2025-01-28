@@ -55,12 +55,12 @@ const product = new require("mongoose").Schema(
       trim: true,
     },
     rating: {
-      type: number,
+      type: Number,
       default: 1,
     },
     isActive: {
       type: Boolean,
-      default: thisstock > 0 ? true : false,
+      default: this.stock > 0 ? true : false,
     },
   },
   {

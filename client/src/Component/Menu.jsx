@@ -81,6 +81,9 @@ function Menu() {
           <li>
             <NavLink to={`/category`} className={`dropdown-item`}>Categories</NavLink>
           </li>
+          <li>
+            <NavLink to={`/products`} className={`dropdown-item`}>Products</NavLink>
+          </li>
           </>
           }
         </ul>
