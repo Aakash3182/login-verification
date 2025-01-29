@@ -60,7 +60,7 @@ const product = new require("mongoose").Schema(
     },
     isActive: {
       type: Boolean,
-      default: this.stock > 0 ? true : false,
+      default: true,
     },
   },
   {

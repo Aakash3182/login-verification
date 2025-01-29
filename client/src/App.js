@@ -37,7 +37,7 @@ function App() {
           <Route path={`/category/edit/:id`} element={<UpdateCategory />} />
           <Route path={`/products`} element={<AllProducts />} />
           <Route path={`/products/add`} element={<AddProducts />} />
-          <Route path={`/products/edit/id`} element={<UpdateProducts />} />
+          <Route path={`/products/edit/:id`} element={<UpdateProducts />} />
         </Route>
         <Route path={`/*`} element={<NotFound />} />
       </Routes>
