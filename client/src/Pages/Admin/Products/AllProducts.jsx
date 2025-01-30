@@ -32,7 +32,7 @@ function Allproducts() {
                   <thead>
                     <tr>
                       <th colSpan={7}>
-                        <NavLink to={`/product/add`} className='btn btn-outline-dark float-end'><i className='bi bi-plus-circle'></i></NavLink>
+                        <NavLink to={`/products/add`} className='btn btn-outline-dark float-end'><i className='bi bi-plus-circle'></i></NavLink>
                       </th>
                     </tr>
                     <tr>
