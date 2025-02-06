@@ -1,0 +1,78 @@
+@import url('http://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+ 
+.showcase-area {
+  height: 100vh;
+  background: linear-gradient(rgba(240, 240, 240, 0.14),
+      rgba(255, 255, 255, 0.336)),
+    url("https://i.postimg.cc/wT3TQS3V/header-image2.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+ 
+ 
+.showcase-area .container {
+  background: transparent;
+}
+
+.navbar-brand {
+  font-size: 2rem !important;
+}
+
+.form-area {
+  height: 100vh;
+  background: linear-gradient(rgba(240, 240, 240, 0.14),
+      rgba(255, 255, 255, 0.336)),
+    url("https://i.postimg.cc/wT3TQS3V/header-image2.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.not-found {
+  height: 100vh !important;
+  background: linear-gradient(rgba(240, 240, 240, 0.14),
+      rgba(255, 255, 255, 0.336)),
+    url("https://i.postimg.cc/wT3TQS3V/header-image2.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.foot {
+  background-color: #eee;
+}
+
+.foot .list-group,
+.foot .list-group-item {
+  background: transparent;
+  border: none;
+}
+
+.foot .btn-link {
+  color: #222;
+  font-weight: 500;
+  text-decoration: none;
+  font-family: sans-serif;
+}
